@@ -1,3 +1,4 @@
+from logger import logger
 from utils import config
 
 
@@ -18,8 +19,8 @@ def compute_thresholds(features):
     speed_idx = int(config.SPEED_HIGH * len(speeds))
     acc_idx = int(config.ACCEL_HIGH * len(accelerations))
 
-    print("speed index: ", speed_idx)
-    print("acc index: ", acc_idx)
+    logger.debug(f"speed index: {speed_idx}")
+    logger.debug(f"acc index: {acc_idx}")
 
     if speed_idx >= len(speeds):
         speed_idx = len(speeds) - 1
@@ -50,7 +51,10 @@ def detect_behaviours(feature, thresholds):
     path_length = feature["path_length"]
     displacement = feature["displacement"]
         
-    path_ratio = path_length / displacement
+    if displacement < 1e-6:
+        path_ratio = 1.0 #stationary vehicle
+    else:
+        path_ratio = path_length/displacement
 
     speed_high = False
     acc_high = False
@@ -125,7 +129,8 @@ def analyze_behaviour(features):
             "id": feature["id"],
             "score": score,
             "label": label,
-            "behaviors": flag_count
+            "behaviors": flag_count,
+            "flags": flag
         })
 
     return results

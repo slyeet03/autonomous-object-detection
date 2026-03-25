@@ -4,7 +4,6 @@ import numpy as np
 
 from utils import config, geometry
 
-features = []
 time = 1 / config.FPS
 
 def calc_speed(history, speeds):
@@ -94,6 +93,8 @@ def calc_displacement(history):
     return displacement 
 
 def extract_features(tracks):
+    features = []
+
     for track in tracks:
         history = track["history"]
         speeds = []

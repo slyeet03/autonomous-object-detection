@@ -19,6 +19,7 @@ datasets/*
 runs/*
 outputs/*
 test_footage/*
+report.csv
 
 # Model files
 model.png
