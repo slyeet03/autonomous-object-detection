@@ -1,4 +1,4 @@
-from utils import geometry, config
+from utils import config, geometry
 
 tracks = []
 NEXT_TRACK_ID = 0
@@ -60,7 +60,7 @@ def update_tracks(detections):
         if track["id"] not in matched_track_ids:
             track["missing_frames"] += 1
 
-        if track["missing_frames"] > config.MAX_MISSING_FRAMES:
+        if track["missing_frames"] > config.MAX_MISSING_FRAME:
             tracks.remove(track)
 
     return tracks

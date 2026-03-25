@@ -1,5 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Test & output artifacts
 test/*
 datasets/*
-coco.yaml
-model.png
 runs/*
+outputs/*
+test_footage/*
+
+# Model files
+model.png
+*.pt
+*.pth
+*.weights
+*.onnx
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs & reports
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db

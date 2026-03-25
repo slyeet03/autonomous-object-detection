@@ -1,7 +1,8 @@
-from utils import geometry
-from utils import config
 import math
+
 import numpy as np
+
+from utils import config, geometry
 
 features = []
 time = 1 / config.FPS
@@ -18,6 +19,9 @@ def calc_speed(history, speeds):
         speed = dist/time
         speeds.append(speed)
 
+    if not speeds:
+        return 0
+    
     avg_speed = sum(speeds) / len(speeds)
     max_speed = max(speeds)
    
@@ -29,8 +33,11 @@ def calc_acc(speeds, accelerations):
             accelerations.append(acceleration)
 
     abs_acc = [abs(x) for x in accelerations]
-    max_acc = max(abs_acc)
 
+    if not abs_acc:
+        return 0
+    
+    max_acc = max(abs_acc)
     return max_acc
 
 
@@ -113,5 +120,7 @@ def extract_features(tracks):
             "path_length": path_length,
             "displacement": displacement
         })
+
+    return features
             
 

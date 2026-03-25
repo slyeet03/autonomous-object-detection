@@ -1,8 +1,16 @@
 import cv2 as cv
+
+import behaviour
+import detection
+import features
+import tracking
 from utils import config
 
+
 def captureVideo():
-    cap = cv.VideoCapture(0)
+    vid_path = "../test_footage/drive_test.mp4"
+
+    cap = cv.VideoCapture(vid_path)
     if not cap.isOpened():
         print("cannot open camera")
         return
@@ -17,6 +25,15 @@ def captureVideo():
         if not ret:
             print("can't receive frame")
             break
+
+        detections = detection.predict(frame)
+        tracks = tracking.update_tracks(detections)
+        feature = features.extract_features(tracks)
+        results = behaviour.analyze_behaviour(feature)
+
+        print(results)
+
+
 
         cv.imshow("live feed", frame)
 

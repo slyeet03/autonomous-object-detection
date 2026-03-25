@@ -1,6 +1,10 @@
 from utils import config
 
+
 def compute_thresholds(features):
+    if len(features) < 3:
+        return None
+
     speeds = []
     accelerations = []
     
@@ -14,17 +18,30 @@ def compute_thresholds(features):
     speed_idx = int(config.SPEED_HIGH * len(speeds))
     acc_idx = int(config.ACCEL_HIGH * len(accelerations))
 
-    speed_high = speeds[speed_idx]
-    acc_high = accelerations[acc_idx]
+    print("speed index: ", speed_idx)
+    print("acc index: ", acc_idx)
 
-    thresholds = []
-    thresholds["speed"] = speed_high
-    thresholds["acc"] = acc_high
+    if speed_idx >= len(speeds):
+        speed_idx = len(speeds) - 1
 
-    return thresholds
+    if acc_idx >= len(accelerations):
+        acc_idx = len(accelerations) - 1
 
+    if not speeds or not accelerations:
+        return 0
+    else:
+        speed_high = speeds[speed_idx]
+        acc_high = accelerations[acc_idx]
+
+        thresholds = {}
+        thresholds["speed"] = speed_high
+        thresholds["acc"] = acc_high
+
+        return thresholds
+
+    
 def detect_behaviours(feature, thresholds):
-    flag = []
+    flag = {}
     flag_count = 0
 
     avg_speed = feature["avg_speed"]
@@ -93,6 +110,9 @@ def assign_label(score):
 
 def analyze_behaviour(features):
     thresholds = compute_thresholds(features)
+    if thresholds is None:
+        return {"status": "warming_up"}
+
 
     results = []
 
@@ -110,8 +130,3 @@ def analyze_behaviour(features):
 
     return results
 
-
-
-    
-            
-        
