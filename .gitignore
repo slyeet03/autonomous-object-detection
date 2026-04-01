@@ -20,6 +20,7 @@ runs/*
 outputs/*
 test_footage/*
 report.csv
+results/*
 
 # Model files
 model.png
