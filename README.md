@@ -4,11 +4,7 @@ A real-time driver behaviour monitoring system that uses computer vision to dete
 
 ## Demo
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=ru3ZAKW4dFc">
-    <img src="assets/thumb.jpeg" width="70%" />
-  </a>
-</p>
+[![output](https://img.youtube.com/vi/ru3ZAKW4dFc/0.jpg)](https://www.youtube.com/watch?v=ru3ZAKW4dFc)
 
 ## Screenshots
 
