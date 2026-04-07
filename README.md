@@ -6,7 +6,7 @@ A real-time driver behaviour monitoring system that uses computer vision to dete
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=ru3ZAKW4dFc">
-    <img src="assets/thumb.jpeg" width="70%" />
+    <img src="assets/thumb.jpg" width="70%" />
   </a>
 </p>
 
