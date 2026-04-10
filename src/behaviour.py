@@ -125,11 +125,12 @@ def analyze_behaviour(features, pool=None):
         score = compute_score(flag)
         label = assign_label(score)
         results.append({
-            "id": feature["id"],
-            "score": score,
-            "label": label,
+            "id":       feature["id"],
+            "score":    score,
+            "label":    label,
             "behaviors": flag_count,
-            "flags": flag
+            "flags":    flag,
+            "avg_speed": feature["avg_speed"],
         })
 
     return results
