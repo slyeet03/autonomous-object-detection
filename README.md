@@ -2,9 +2,15 @@
 
 A real-time driver behaviour monitoring system that uses computer vision to detect, track, and score vehicles from a traffic camera feed. It analyses how vehicles move and flags dangerous driving patterns like speeding, aggressive acceleration, and erratic movement.
 
+## Demo
+
 [![output](https://img.youtube.com/vi/ru3ZAKW4dFc/0.jpg)](https://www.youtube.com/watch?v=ru3ZAKW4dFc)
 
----
+## Screenshots
+
+<p align="center">
+  <img src="assets/1.jpg" width="40%" />
+</p>
 
 ## How It Works
 
