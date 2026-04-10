@@ -112,19 +112,18 @@ def assign_label(score):
 
     return label
 
-def analyze_behaviour(features):
-    thresholds = compute_thresholds(features)
+def analyze_behaviour(features, pool=None):
+    threshold_source = pool if pool else features
+    
+    thresholds = compute_thresholds(threshold_source)
     if thresholds is None:
         return {"status": "warming_up"}
 
-
     results = []
-
     for feature in features:
         flag, flag_count = detect_behaviours(feature, thresholds)
         score = compute_score(flag)
         label = assign_label(score)
-
         results.append({
             "id": feature["id"],
             "score": score,
@@ -134,4 +133,3 @@ def analyze_behaviour(features):
         })
 
     return results
-

@@ -103,7 +103,7 @@ def extract_features(tracks):
         path_length = 0
         
         # skip if the history has less that two data of speed
-        if len(history)< 3:
+        if len(history)< config.MIN_HISTORY:
             continue
 
         avg_speed, max_speed = calc_speed(history, speeds)

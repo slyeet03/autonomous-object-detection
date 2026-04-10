@@ -1,3 +1,4 @@
+MIN_HISTORY = 8
 CONF_THRESHOLD = 0.4
 MODEL_PATH = "../models/best.pt"
 MAX_DISTANCE = 50
